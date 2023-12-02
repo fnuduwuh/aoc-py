@@ -1,8 +1,10 @@
 from functools import reduce
 
+
 def readfile():
     file = open('input.txt', 'r')
     return file.read()
+
 
 def part_one():
     unique_ids = list()
@@ -25,6 +27,7 @@ def part_one():
 
     print('Solution to part one: ', reduce(lambda a, b: a + b, unique_ids))
 
+
 def part_two():
     sum_of_powers = 0
     for lines in readfile().split('\n'):
@@ -40,9 +43,9 @@ def part_two():
                 green = int(cubes_no)
             if color == 'blue' and int(cubes_no) > blue:
                 blue = int(cubes_no)
-        sum_of_powers += (red*green*blue)
+        sum_of_powers += (red * green * blue)
     print('Solution to part two: ', sum_of_powers)
 
-if __name__ == '__main__':
-    part_one()
-    part_two()
+
+part_one()
+part_two()
