@@ -53,7 +53,6 @@ def part_two():
         word_last = get_first_word(string_reversed, numbers_reversed)
         if word_last and string_reversed.index(digit_last) > string_reversed.index(word_last):
             digit_last = numbers_reversed.index(word_last) + 1
-        print(str(digit_one) + str(digit_last))
         sum_of_values += int(str(digit_one) + str(digit_last))
     print(sum_of_values)
 
