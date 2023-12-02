@@ -32,7 +32,7 @@ def part_one():
         digit_one = get_first_digit(line)
         digit_last = get_first_digit(reversed(line))
         sum_of_values += int(digit_one + digit_last)
-    print(sum_of_values)
+    print('Solution to part one:', sum_of_values)
 
 
 def part_two():
@@ -54,7 +54,7 @@ def part_two():
         if word_last and string_reversed.index(digit_last) > string_reversed.index(word_last):
             digit_last = numbers_reversed.index(word_last) + 1
         sum_of_values += int(str(digit_one) + str(digit_last))
-    print(sum_of_values)
+    print('Solution to part two:', sum_of_values)
 
 
 part_one()
