@@ -30,7 +30,7 @@ def part_two():
     card_count = {}
     for i in range(len(data) - 1):
         card_count[i + 1] = 1  # add all cards to dict
-    for i,line in enumerate(data):
+    for i, line in enumerate(data):
         if line == '':
             break
         matches = 0
@@ -41,10 +41,10 @@ def part_two():
         for num in actual_no:
             if num in winning_no:
                 matches += 1
-        for j in range(1, matches+1):
+        for j in range(1, matches + 1):
             if card_no < len(data):
-                card_count[card_no+j] += 1*card_count.get(card_no)
-    print('Result for part two is:',functools.reduce(lambda a,b: a+b, card_count.values()))
+                card_count[card_no + j] += card_count.get(card_no)
+    print('Result for part two is:', functools.reduce(lambda a, b: a + b, card_count.values()))
 
 
 part_one()
