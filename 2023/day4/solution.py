@@ -33,15 +33,10 @@ def part_two():
     for i, line in enumerate(data):
         if line == '':
             break
-        matches = 0
-        card_no = int(line.split(':')[0].split()[1])
+        card_no = i + 1
         line = line.split(':')[1]
-        winning_no = line.split('|')[0].split()
-        actual_no = line.split('|')[1].split()
-        for num in actual_no:
-            if num in winning_no:
-                matches += 1
-        for j in range(1, matches + 1):
+        winning_no, actual_no = line.split('|')
+        for j in range(1, len(list(set(winning_no.split()).intersection(actual_no.split()))) + 1):
             if card_no < len(data):
                 card_count[card_no + j] += card_count.get(card_no)
     print('Result for part two is:', functools.reduce(lambda a, b: a + b, card_count.values()))
