@@ -36,7 +36,6 @@ def part_one():
     for index, time in enumerate(times):
         distance = int(distances[index])
         time = int(time)
-        speed = 0
         results = calc_race(time, distance)
         options.append(len(results))
 
