@@ -20,6 +20,9 @@ def count_cards(hand, part):
     if part == 2:
         amount_of_jokers = list(cards).count('J')
 
+    # ipv fatsoeneren gewoon if-statements erin blijven rammen omdat dat makkelijker is dan nadenken
+    # deel 1 werkt nu niet meer
+    # moet misschien toch nog even netjes gemaakt worden
     for card in list(cards):
         if amount_of_jokers == 5:
             hand_values['card_score'] = possible_hands.index('Five of a kind')
