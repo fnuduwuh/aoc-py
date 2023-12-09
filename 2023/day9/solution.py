@@ -34,15 +34,6 @@ def reduce_rec(history):
     update_extrapolated(results_right, results_left)
 
 
-def reduce_rec_rev(history):
-    results = [int(history[0])]
-    diff = history
-    while not all(x == diff[0] for x in diff):
-        diff = get_diff(diff)
-        results.append(diff[0])
-    update_extrapolated(results)
-
-
 with open('input.txt') as f:
     data = f.readlines()
     for line in data:
