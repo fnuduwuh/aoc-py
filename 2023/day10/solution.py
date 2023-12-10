@@ -1,43 +1,5 @@
 import math
 
-
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-
-class LinkedList:
-    def __init__(self):
-        self.head = None
-
-    def __iter__(self):
-        return self
-    def __next__(self):
-        self.idx += 1
-        try:
-            return self.data[self.idx-1]
-        except IndexError:
-            self.idx = 0
-            raise StopIteration
-
-    def addNode(self, data):
-        new_node = Node(data)
-        if self.head is None:
-            self.head = new_node
-            return
-        else:
-            new_node.next = self.head
-            self.head = new_node
-
-    def printLL(self):
-        current_node = self.head
-        output = [current_node.data]
-        while(current_node):
-            output.append(current_node.data)
-            current_node = current_node.next
-        return output
-
 def get_new_pos(curr, prev):
     symbol = two_d_arr[curr[0]][curr[1]]
     north = (curr[0]-1, curr[1])
@@ -80,7 +42,7 @@ def count_inside_loop(arr, linkedlist):
                     inside_loop = not inside_loop
             if not (i,j) in linkedlist and inside_loop:
                 count += 1
-    print('Part 2:', count)
+    return count
 
 
 with open('input.txt') as f:
@@ -95,17 +57,14 @@ with open('input.txt') as f:
                 current_pos = (i, j)
                 break
 
-    ll = LinkedList()
-    ll.addNode(current_pos)
+    visited = [current_pos]
     prev_pos = current_pos
     current_pos = (current_pos[0]+1,current_pos[1])
-    ll.addNode(current_pos)
-
+    visited.append(current_pos)
     step = 1
     while two_d_arr[current_pos[0]][current_pos[1]] != 'S':
         step += 1
         current_pos, prev_pos = get_new_pos(current_pos, prev_pos)
-        ll.addNode(current_pos)
-    print('Part 1:',math.floor(step/2))
-    all_in_loop = ll.printLL()
-    count_inside_loop(two_d_arr, all_in_loop)
+        visited.append(current_pos)
+    print('Part 1:', math.floor(step/2))
+    print('Part 1:', count_inside_loop(two_d_arr, visited))
