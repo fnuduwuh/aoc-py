@@ -28,7 +28,7 @@ def get_new_pos(curr, prev):
     pos_return = [pos for pos in connections if pos != prev][0]
     return pos_return, curr
 
-def count_inside_loop(arr, linkedlist):
+def count_inside_loop(arr, visited_nodes):
     for i in range(len(arr)):
         for j in range(len(arr[i])):
             if arr[i][j] == 'S':
@@ -37,10 +37,13 @@ def count_inside_loop(arr, linkedlist):
     count = 0
     for i in range(len(arr)):
         for j in range(len(arr[i])):
-            if (i,j) in linkedlist:
+            if (i,j) in visited_nodes:
+                # Als de coördinaten in de main loop horen en de waarde van de tegel
+                # een uiteinde op noord heeft togglen we of we binnen of buiten de main loop zitten
+                # en dus of we de tegels tellen ja dan wel nee
                 if arr[i][j] == 'J' or arr[i][j] == 'L' or arr[i][j] == '|':
                     inside_loop = not inside_loop
-            if not (i,j) in linkedlist and inside_loop:
+            if not (i,j) in visited_nodes and inside_loop:
                 count += 1
     return count
 
