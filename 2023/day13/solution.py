@@ -23,8 +23,7 @@ def check_pattern(lines, vertical=False):
         for index in indices:
             try:
                 if lines[index] == lines[index + 1]:
-                    if check_mirror_valid(lines,
-                                          index):  # if indices[:index] == list(range(0,index+1)) or indices[index:] == list(range(index,len(lines))):
+                    if check_mirror_valid(lines, index):
                         return index + 1 if vertical else (index + 1) * 100
             except IndexError:
                 continue
